@@ -1,18 +1,14 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.drive;
 
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.arcrobotics.ftclib.drivebase.MecanumDrive;
-import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class DriveSubsystem extends SubsystemBase {
     private final MecanumDrive drive;
-    private final GamepadEx gamepad;
 
-    public DriveSubsystem(GamepadEx gamepad, HardwareMap hardwareMap) {
-        this.gamepad = gamepad;
-
+    public DriveSubsystem(HardwareMap hardwareMap) {
         Motor frontLeft = new Motor(hardwareMap, "frontLeft");
         Motor backRight = new Motor(hardwareMap, "backRight");
         Motor frontRight = new Motor(hardwareMap, "frontRight");
@@ -26,13 +22,7 @@ public class DriveSubsystem extends SubsystemBase {
         );
     }
 
-    @Override
-    public void periodic() {
-        drive.driveRobotCentric(
-                gamepad.getLeftX(),
-                -gamepad.getLeftY(),
-                gamepad.getRightX(),
-                false
-        );
+    public void drive(double x, double y, double t) {
+        drive.driveRobotCentric(x, y, t, false);
     }
 }
