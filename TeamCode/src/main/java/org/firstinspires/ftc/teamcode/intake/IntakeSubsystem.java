@@ -28,11 +28,7 @@ public class IntakeSubsystem extends SubsystemBase {
         servo.setPosition(UP_ANGLE);
     }
 
-    public void go() {
-        motor.set(1);
-    }
-
-    public void stop() {
-        motor.set(0);
+    public void roller(double power) {
+        motor.set(power);
     }
 }

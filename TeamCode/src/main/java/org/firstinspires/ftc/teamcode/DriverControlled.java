@@ -28,9 +28,6 @@ public class DriverControlled extends CommandOpMode {
         frontArmSubsystem.setDefaultCommand(frontArmCommand);
 
         IntakeSubsystem intakeSubsystem = new IntakeSubsystem(hardwareMap);
-        armGamepad.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER)
-                .whenPressed(new InstantCommand(intakeSubsystem::go, intakeSubsystem))
-                .whenReleased(new InstantCommand(intakeSubsystem::stop, intakeSubsystem));
         armGamepad.getGamepadButton(GamepadKeys.Button.DPAD_DOWN)
                 .whenPressed(new InstantCommand(intakeSubsystem::down, intakeSubsystem));
         armGamepad.getGamepadButton(GamepadKeys.Button.DPAD_UP)
