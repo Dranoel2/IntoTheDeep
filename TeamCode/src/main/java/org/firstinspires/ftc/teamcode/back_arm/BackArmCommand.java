@@ -1,13 +1,13 @@
-package org.firstinspires.ftc.teamcode.front_arm;
+package org.firstinspires.ftc.teamcode.back_arm;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 
-public class FrontArmCommand extends CommandBase {
-    private final FrontArmSubsystem subsystem;
+public class BackArmCommand extends CommandBase {
+    private final BackArmSubsystem subsystem;
     private final GamepadEx gamepad;
 
-    public FrontArmCommand(FrontArmSubsystem subsystem, GamepadEx gamepad) {
+    public BackArmCommand(BackArmSubsystem subsystem, GamepadEx gamepad) {
         this.subsystem = subsystem;
         this.gamepad = gamepad;
 
@@ -16,6 +16,6 @@ public class FrontArmCommand extends CommandBase {
 
     @Override
     public void execute() {
-        subsystem.drive(gamepad.getLeftY());
+        subsystem.drive(-gamepad.getRightY());
     }
 }
