@@ -11,12 +11,14 @@ public class IntakeRollerCommand extends CommandBase {
     public IntakeRollerCommand(IntakeSubsystem subsystem, GamepadEx gamepad) {
         this.subsystem = subsystem;
         this.gamepad = gamepad;
+
+        addRequirements(subsystem);
     }
 
     @Override
     public void execute() {
         double power = gamepad.getTrigger(GamepadKeys.Trigger.RIGHT_TRIGGER)
-                - gamepad.getTrigger(GamepadKeys.Trigger.RIGHT_TRIGGER);
+                - gamepad.getTrigger(GamepadKeys.Trigger.LEFT_TRIGGER);
         subsystem.roller(power);
     }
 }

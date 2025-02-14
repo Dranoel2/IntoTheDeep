@@ -28,7 +28,6 @@ public class FrontArmSubsystem extends SubsystemBase {
 
     public FrontArmSubsystem(HardwareMap hardwareMap) {
         motor = new MotorEx(hardwareMap, "frontArm");
-        motor.setInverted(true);
         motor.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         motor.stopAndResetEncoder();
         controller = new PIDController(K_P, K_I, K_D);
