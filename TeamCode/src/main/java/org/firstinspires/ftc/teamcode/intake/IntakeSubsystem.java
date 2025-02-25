@@ -16,7 +16,7 @@ public class IntakeSubsystem extends SubsystemBase {
     public static double DOWN_ANGLE = 0;
     public static double UP_ANGLE = 135;
 
-    public static double SPEED = 10.0f;
+    public static double SPEED = 90.0f;
 
     private final MotorEx motor;
     private final ServoEx leftServo;
@@ -32,9 +32,12 @@ public class IntakeSubsystem extends SubsystemBase {
         motor = new MotorEx(hardwareMap, "intakeMotor");
         leftServo = new SimpleServo(hardwareMap, "intakeServoLeft", MIN_ANGLE, MAX_ANGLE);
         rightServo = new SimpleServo(hardwareMap, "intakeServoRight", MIN_ANGLE, MAX_ANGLE);
-        rightServo.setInverted(true);
+        leftServo.setInverted(true);
         angle = UP_ANGLE;
         angleTarget = UP_ANGLE;
+
+        leftServo.turnToAngle(angle);
+        rightServo.turnToAngle(angle);
     }
 
     @Override

@@ -28,8 +28,8 @@ public class FrontArmSubsystem extends SubsystemBase {
 
     public FrontArmSubsystem(HardwareMap hardwareMap) {
         motor = new MotorEx(hardwareMap, "frontArm");
+        motor.setInverted(true);
         motor.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
-        motor.stopAndResetEncoder();
         controller = new PIDController(K_P, K_I, K_D);
         voltageSensor = hardwareMap.get(VoltageSensor.class, "Control Hub");
         targetPosition = 0;
@@ -46,5 +46,13 @@ public class FrontArmSubsystem extends SubsystemBase {
 
     public void drive(double value) {
         targetPosition = MathUtils.clamp(targetPosition + value * SENSITIVITY, MIN_POS, MAX_POS);
+    }
+
+    public void home() {
+        motor.set(-0.1);
+    }
+
+    public void start() {
+        motor.stopAndResetEncoder();
     }
 }
